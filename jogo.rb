@@ -22,7 +22,28 @@ def pede_um_numero(tentativa, limite_de_tentativas)
 	chute.to_i
 end
 
+def verifica_se_acertou(numero_secreto, chute)
+	acertou = numero_secreto == chute
+
+	if acertou
+		puts 'Acertou!!'
+		return true
+	end
+
+	maior = numero_secreto > chute
+
+	if maior
+		puts "O número é maior"
+	else
+		puts 'O número é menor'
+	end
+	false
+end
+
+
+
 da_boas_vindas
+
 numero_secreto = sorteia_numero_secreto
 
 limite_de_tentativas = 5
@@ -31,18 +52,8 @@ for tentativa in 1..limite_de_tentativas
 
 	chute = pede_um_numero(tentativa, limite_de_tentativas)
 
-	acertou = numero_secreto == chute
-
-	if acertou
-		puts 'Acertou!!'
+	if verifica_se_acertou(numero_secreto, chute)
 		break
-	else
-		maior = numero_secreto > chute
-
-		if maior
-			puts "O número é maior"
-		else
-			puts 'O número é menor'
-		end
 	end
+
 end
